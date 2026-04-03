@@ -1,0 +1,1 @@
+ALTER TABLE employees DROP CONSTRAINT unique_fullname;

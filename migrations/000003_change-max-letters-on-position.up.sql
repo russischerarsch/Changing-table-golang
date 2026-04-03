@@ -1,0 +1,2 @@
+ALTER TABLE employees
+ALTER COLUMN position TYPE VARCHAR(60)
