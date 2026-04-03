@@ -7,7 +7,9 @@ type Employee struct {
 }
 
 var Employees []Employee
+var GlobalID int
 
 func (e *Employee) AddID() {
-	e.ID++
+	GlobalID++
+	e.ID = GlobalID
 }

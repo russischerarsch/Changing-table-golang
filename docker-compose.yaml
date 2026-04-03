@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_PASSWORD: dkfl26052010
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql  # ← только /var/lib/postgresql (без /data)
+    networks:
+      - app_network
+
+  app:
+    build: .
+    ports:
+      - "9091:9091"
+    depends_on:
+      - postgres
+    environment:
+      CONN_STRING: postgres://postgres:dkfl26052010@postgres:5432/postgres?sslmode=disable
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
